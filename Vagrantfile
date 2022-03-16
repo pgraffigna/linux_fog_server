@@ -9,13 +9,8 @@ Vagrant.configure("2") do |config|
     nodo1.vm.box = "debian/buster64"
     nodo1.vm.hostname = "nodo1"
     nodo1.vm.box_check_update = false
-
-    nodo1.vm.network "public_network",
-    :dev => BRIDGE_INT,
-    :type => "bridge",
-    :mode => "brigde",
-    :ip => "10.21.7.131"
-    
+    nodo1.vm.network :private_network, :ip => '192.168.60.11', :libvirt__network_name => 'vagrant-libvirt'
+     
     nodo1.vm.provider :libvirt do |v|
       v.memory = 2048  
       v.cpus = 2
